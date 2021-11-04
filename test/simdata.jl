@@ -11,7 +11,7 @@ X = hcat(ones(n), randn(n, p-1))
 noise_coefs = zeros(p - 5)
 β = vcat([1.5, 1.1, -10.5, 4.5, 1.9], noise_coefs)
 η = X*β                                                   # linear predictor
-pr = 1./(1 + exp.(-η))                                     # inv-logit
+pr = 1 ./(1 + exp.(-η))                                     # inv-logit
 
 # simulate outcome variable
 y = map(π -> rand(Distributions.Binomial(1, π)), pr)
